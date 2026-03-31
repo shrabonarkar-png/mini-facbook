@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mini Facebook</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f0f2f5;
+      margin: 0;
+    }
+    .header {
+      background: #1877f2;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+    }
+    .post-box {
+      background: white;
+      margin: 20px;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    button {
+      background: #1877f2;
+      color: white;
+      border: none;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">Mini Facebook 😎</div>
+
+<div class="post-box">
+  <input type="text" id="postText" placeholder="কি ভাবছো?" style="width:100%; padding:8px;">
+  <button onclick="post()">Post</button>
+</div>
+
+<div id="posts"></div>
+
+<script>
+function post() {
+  let text = document.getElementById("postText").value;
+  if(text === "") return;
+
+  let postDiv = document.createElement("div");
+  postDiv.className = "post-box";
+  postDiv.innerHTML = "<p>"+text+"</p><button onclick='like(this)'>👍 Like</button>";
+
+  document.getElementById("posts").prepend(postDiv);
+  document.getElementById("postText").value = "";
+}
+
+function like(btn) {
+  btn.innerText = "❤️ Liked";
+}
+</script>
+
+</body>
+</html>
